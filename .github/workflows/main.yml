@@ -10,14 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
 
-    - name: executing remote ssh commands using password
-      uses: ./
+    - name: Set up SSH key
+      uses: webfactory/ssh-agent@v0.5.3
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
-        script: whoami
-      
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Deploy code
+      run: ssh -o StrictHostKeyChecking=no root@103.69.124.141 'bash -s' < /var/www/html/ito_info_new/deploy.sh
