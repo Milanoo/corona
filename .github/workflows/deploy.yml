@@ -18,4 +18,4 @@ jobs:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
     - name: Deploy code
-      run: ssh -o StrictHostKeyChecking=no root@103.69.124.141 'bash -s < /var/www/html/ito_info_new/deploy.sh'
+      run: ssh -o StrictHostKeyChecking=no root@103.69.124.141 'bash < /var/www/html/ito_info_new/deploy.sh'
