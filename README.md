@@ -1,2 +1,2 @@
 # corona
-corona alert v3
+corona alert v2.0
